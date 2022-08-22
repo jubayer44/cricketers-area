@@ -8,7 +8,7 @@ function findingInput(elementId) {
 function setValues(elementId, value) {
 
     //validation:
-    if (isNaN(value) || value <= 0) {         
+    if (isNaN(value) || value <= 0) {
         alert('Please input a valid number');
         return;
     };
