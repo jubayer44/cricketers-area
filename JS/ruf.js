@@ -1,5 +1,4 @@
 
-// let array = [];
 let count = 0;
 const cardsBtn = document.getElementsByClassName('btn-success')
 for (let btn of cardsBtn) {
@@ -9,12 +8,7 @@ for (let btn of cardsBtn) {
 
 
         const playersName = (event.target.parentNode.children[1].children[0].innerText)
-        //    array.push(playersName);
         count = count + 1;
-        //    if(count === 6){
-        //     alert('sorry')
-        //     return;
-        // }
         displayText(count, playersName)
     })
 };
@@ -33,20 +27,34 @@ function displayText(num, name) {
         tableBody.appendChild(ol)
         return
     }
+
+    //disabled all button after selecting 5 players
     const allButtons = document.querySelectorAll('.btn-success');
+    alert('Sorry! you can not select more than 5 player')
     for (let button of allButtons) {
         button.disabled = true;
     }
 
 };
 
+    //Get Calculate Button and find player Expose:
+    document.getElementById('calculate-btn').addEventListener('click', function(){
+        const cardBody = document.getElementById('body-table')
+        const cardBodyIndex = (cardBody.children.length)
+        const parPlayer = document.getElementById('per-player-input');
 
+        const playerExposes = (parPlayer.value * cardBodyIndex)
 
+        setValues('player-expose', playerExposes)
+    })
 
-// document.getElementById("btn-1").onclick = function() {
-//     //disable
-//     this.disabled = true;
+    //Set values function:
+    function setValues(elementId, value){
+        if(isNaN(value) || value <= 0){         //set condition:
+            alert('Please input a valid number');
+            return;
+        }
+       document.getElementById(elementId).innerText = value;
+    }
 
-//     //do some validation stuff
-// }
 

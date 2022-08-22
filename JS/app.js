@@ -1,3 +1,4 @@
+
 // let array = [];
 let count = 0;
 const cardsBtn = document.getElementsByClassName('btn-success')
@@ -10,10 +11,6 @@ for (let btn of cardsBtn) {
         const playersName = (event.target.parentNode.children[1].children[0].innerText)
         //    array.push(playersName);
         count = count + 1;
-        //    if(count === 6){
-        //     alert('sorry')
-        //     return;
-        // }
         displayText(count, playersName)
     })
 };
@@ -22,7 +19,7 @@ for (let btn of cardsBtn) {
 
 //Display selected players name:
 function displayText(num, name) {
-    if (num <= 5) {
+    if (num < 6) {
         const tableBody = document.getElementById('body-table');
         const ol = document.createElement('ol');
         ol.innerHTML = `
@@ -33,6 +30,7 @@ function displayText(num, name) {
         return
     }
     const allButtons = document.querySelectorAll('.btn-success');
+    alert('Sorry! you can not select more than 5 player')
     for (let button of allButtons) {
         button.disabled = true;
     }
